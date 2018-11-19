@@ -3,15 +3,99 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-row style="height: 40%;" no-padding no-margin>
+    <ion-col col-12 no-padding no-margin>
+      <ion-slides #wizardSlider pager="true">
+        <ion-slide background-size *ngFor="let slide of data.slides;"
+                   [ngStyle]="{'background-image': 'url(' + slide.backgroundImage + ')'}">
+          <h1 wizard-title>{{slide.title}}</h1>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+  <ion-row no-padding no-margin>
+    <ion-col col-6 >
+      <ion-card>
+        <ion-card-header>
+          <ion-row align-items-center text-center>
+            <strong>Today</strong>
+          </ion-row>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row align-items-center text-center>
+            <ion-col col-6 align-items-center text-center>
+              <img [src]="logoUrl">
+            </ion-col>
+            <ion-col col-6 align-items-center text-center>
+              <strong>30°C</strong>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-6 >
+      <ion-card>
+        <ion-card-header>
+          <ion-row align-items-center text-center>
+            <strong>Tomorrow</strong>
+          </ion-row>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row align-items-center text-center>
+            <ion-col col-6 align-items-center text-center>
+              <img [src]="logoUrl">
+            </ion-col>
+            <ion-col col-6 align-items-center text-center>
+              <strong>30°C</strong>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row no-padding no-margin>
+    <ion-col col-12 no-padding no-margin>
+      <ion-list>
+        <ul no-margin no-padding class="collapsible">
+          <li margin *ngFor="let device of data.devices; let i = index">
+            <div class="collapsible-header">
+              <ion-item no-margin padding no-lines background-size
+                        [ngStyle]="{'background-image': 'url(' + logoUrl + ')'}">
+                <h2 float-left>{{device.name}} - {{device.simNumber}}</h2>
+                <button ion-button float-right button-clear-outline outline round (click)="toggleGroup(device)">
+                  Current Status
+                </button>
+              </ion-item>
+            </div>
+            <div class="item-accordion" [ngClass]="{'active': isGroupShown(device) }"
+                 [hidden]="!isGroupShown(device)">
+              <ion-item no-lines >
+                <div gradient item-start>
+                  <img images-filter [src]="logoUrl"/>
+                </div>
+                <ion-label item-title padding-top>Current Status</ion-label>
+                <ion-label item-subtitle *ngIf="device.status">ON</ion-label>
+                <ion-label item-subtitle *ngIf="!device.status">OFF</ion-label>
+                <ion-toggle item-end [(ngModel)]="device.status" (ngModelChange)="onToggleChange(i)" ></ion-toggle>
+              </ion-item>
+            </div>
+          </li>
+        </ul>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-card>
+    <ion-card-header>
+      <strong>Farm Location</strong>
+    </ion-card-header>
+    <ion-card-content padding>
+      <div id="map_canvas"></div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

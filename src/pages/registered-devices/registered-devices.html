@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registered devices</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding *ngIf="data != null">
+    <ion-row>
+      <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+        <ion-list no-margin lines>
+          <ion-item *ngFor="let device of data.devices;" (click)="onEvent('onDevice', device)">
+            <ion-avatar item-start>
+              <img [src]="logoUrl">
+            </ion-avatar>
+            <h2 item-title>{{device.name}}</h2>
+            <h3 item-subtitle>{{device.simNumber}} - {{device.location}}</h3>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="onEvent('onFab', data)">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

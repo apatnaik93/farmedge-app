@@ -1,0 +1,23 @@
+<ion-content has-header white-background>
+  <ion-grid no-padding *ngIf="loading">
+    <ion-row>
+      <img [src]="spinner" />
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!loading">
+    <ion-row wrap padding>
+      <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+        <img [src]="logoUrl" >
+        <h2 ion-text style="text-align: center;">
+          <strong>FarmEdge</strong>
+        </h2>
+        <ion-item no-padding transparent>
+          <ion-label floating>Mobile</ion-label>
+          <ion-input required type="number" pattern="[0-9]{10}" [(ngModel)]="mobile"></ion-input>
+        </ion-item>
+        <button ion-button float-left button-clear-outline round outline (click)="onEvent('onLogin')">Login</button>
+        <button ion-button float-left button-clear-outline round outline (click)="onEvent('onRegister')">Register</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

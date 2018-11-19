@@ -1,3 +1,149 @@
 page-home {
+  li {
+    list-style-type: none;
+    &[margin] {
+      margin: 5px 10px;
+    }
+  }
 
+  .collapsible-header {
+    [background-size] {
+      height: 150px;
+      position: relative;
+      margin-bottom: 5px !important;
+    }
+
+    .item-inner {
+      padding: 0;
+    }
+
+    [button-clear-outline] {
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+    }
+
+    [item-title] {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+  }
+
+  [icon-small] {
+    font-size: icon-size('icon-small') !important;
+    color: theme-colors('mainColors', 'accent') !important;
+  }
+
+  .item-accordion {
+    width: 100%;
+    height: 0;
+    display: block !important;
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    overflow: hidden;
+
+    &.active {
+      height: 100% !important;
+    }
+
+    ion-item {
+      margin-bottom: 5px;
+
+    }
+
+    [subitem-title] {
+      color: theme-colors('mainColors', 'accent') !important;
+    }
+
+    ion-label {
+      margin: 0;
+    }
+
+  }
+
+  [wizard-titl] {
+    z-index: 9;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .swiper-slide {
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    @include darkening-blend-mode;
+  }
+
+  [default-button] {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .swiper-pagination {
+    bottom: 10% !important;
+
+    .swiper-pagination-bullet {
+      background: theme-colors('mainColors', 'primary') !important;
+    }
+  }
+
+  ion-slides {
+    height: 100%;
+    margin-top: 20px;
+  }
+
+  [wizard-title] {
+    z-index: 2;
+    position: relative;
+  }
+
+  .swiper-pagination {
+    bottom: 20px;
+  }
+
+  .swiper-wrapper {
+    height: 90%;
+  }
+
+  .swiper-container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  [header-title] {
+    font-weight: 100;
+  }
+  ion-item {
+    .input-wrapper {
+      display: block;
+
+      ion-label {
+        margin: 0 !important;
+
+        &[padding-top] {
+          padding-top: 25px;
+        }
+      }
+    }
+  }
+
+  // Settings gradient image
+  [gradient] {
+    opacity: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 72px;
+    width: 72px;
+    margin-right: 16px !important;
+    position: relative;
+    @include darkening-blend-mode;
+  }
+
+}
+
+#map_canvas {
+  height: 250px;
 }

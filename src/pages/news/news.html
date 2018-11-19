@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>news</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-grid no-padding *ngIf="data != null">
+    <ion-row>
+      <ion-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 *ngFor="let item of data.items;let i = index">
+        <ion-card text-left (click)="onEvent('onItemClick', item.title, $event)">
+          <div card-image>
+            <img images-filter src="{{item.image}}" />
+            <h2 card-title>{{item.titleHeader}}</h2>
+          </div>
+          <ion-card-content>
+            <ion-card-title>
+              <h1 card-subtitle>{{item.title}}</h1>
+            </ion-card-title>
+            <p card-body-text>{{item.description}}</p>
+          </ion-card-content>
+          <button ion-button margin button-clear-outline round outline medium float-left (click)="onEvent('onShare', item, $event)">
+            Explore
+          </button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

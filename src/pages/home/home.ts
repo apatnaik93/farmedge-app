@@ -32,6 +32,11 @@ export class HomePage {
   };
 
   logoUrl = "assets/images/logo/login.png";
+  wetherUrl = "assets/images/weather.png";
+  pumpUrl = "assets/images/pump.png";
+
+  weather: any;
+  temp: string = '0';
 
   constructor(public navCtrl: NavController,
               public httpService: HttpService,
@@ -41,20 +46,26 @@ export class HomePage {
   }
 
   ngAfterViewInit() {
-    this.nativeStorage.getItem('devices')
+    /*this.nativeStorage.getItem('devices')
       .then((devices) => {
         this.data.devices = devices;
-      });
-    // this.loadMap();
+      });*/
+     this.loadMap();
   }
 
   ionViewDidEnter() {
+    this.httpService.getWeather()
+      .then((response)=>{
+        this.weather = response;
+        this.temp = this.weather.currently.temperature;
+      });
     this.httpService.getDevices()
       .then((response) => {
-        this.nativeStorage.setItem('devices', response.devices)
+        /*this.nativeStorage.setItem('devices', response.devices)
           .then(() => {
             this.data.devices = response.devices;
-          });
+          });*/
+        this.data.devices = response.devices;
       });
   }
 

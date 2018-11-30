@@ -1,10 +1,10 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title text-center>Home</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
 
+<ion-content>
   <ion-row style="height: 40%;" no-padding no-margin>
     <ion-col col-12 no-padding no-margin>
       <ion-slides #wizardSlider pager="true">
@@ -17,7 +17,7 @@
   </ion-row>
 
   <ion-row no-padding no-margin>
-    <ion-col col-6 >
+    <ion-col col-6>
       <ion-card>
         <ion-card-header>
           <ion-row align-items-center text-center>
@@ -27,16 +27,16 @@
         <ion-card-content>
           <ion-row align-items-center text-center>
             <ion-col col-6 align-items-center text-center>
-              <img [src]="logoUrl">
+              <img [src]="wetherUrl">
             </ion-col>
             <ion-col col-6 align-items-center text-center>
-              <strong>30°C</strong>
+              <strong>{{temp}}°C</strong>
             </ion-col>
           </ion-row>
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col col-6 >
+    <ion-col col-6>
       <ion-card>
         <ion-card-header>
           <ion-row align-items-center text-center>
@@ -46,10 +46,10 @@
         <ion-card-content>
           <ion-row align-items-center text-center>
             <ion-col col-6 align-items-center text-center>
-              <img [src]="logoUrl">
+              <img [src]="wetherUrl">
             </ion-col>
             <ion-col col-6 align-items-center text-center>
-              <strong>30°C</strong>
+              <strong>{{temp}}°C</strong>
             </ion-col>
           </ion-row>
         </ion-card-content>
@@ -59,33 +59,38 @@
 
   <ion-row no-padding no-margin>
     <ion-col col-12 no-padding no-margin>
-      <ion-list>
-        <ul no-margin no-padding class="collapsible">
-          <li margin *ngFor="let device of data.devices; let i = index">
-            <div class="collapsible-header">
-              <ion-item no-margin padding no-lines background-size
-                        [ngStyle]="{'background-image': 'url(' + logoUrl + ')'}">
-                <h2 float-left>{{device.name}} - {{device.simNumber}}</h2>
-                <button ion-button float-right button-clear-outline outline round (click)="toggleGroup(device)">
-                  Current Status
-                </button>
-              </ion-item>
-            </div>
-            <div class="item-accordion" [ngClass]="{'active': isGroupShown(device) }"
-                 [hidden]="!isGroupShown(device)">
-              <ion-item no-lines >
-                <div gradient item-start>
-                  <img images-filter [src]="logoUrl"/>
+      <ion-card>
+        <ion-card-header>
+          <strong>Devices</strong>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ul no-margin no-padding class="collapsible">
+              <li margin *ngFor="let device of data.devices; let i = index">
+                <div class="collapsible-header">
+                  <ion-item no-margin no-padding no-lines background-size>
+                    <h2 float-left><strong>{{device.name}} - {{device.simNumber}}</strong></h2>
+                    <button ion-button float-right outline round (click)="toggleGroup(device)">
+                      Status
+                    </button>
+                  </ion-item>
                 </div>
-                <ion-label item-title padding-top>Current Status</ion-label>
-                <ion-label item-subtitle *ngIf="device.status">ON</ion-label>
-                <ion-label item-subtitle *ngIf="!device.status">OFF</ion-label>
-                <ion-toggle item-end [(ngModel)]="device.status" (ngModelChange)="onToggleChange(i)" ></ion-toggle>
-              </ion-item>
-            </div>
-          </li>
-        </ul>
-      </ion-list>
+                <div class="item-accordion" [ngClass]="{'active': isGroupShown(device) }"
+                     [hidden]="!isGroupShown(device)">
+                  <ion-item no-lines>
+                    <div gradient item-start>
+                      <img images-filter [src]="pumpUrl"/>
+                    </div>
+                    <ion-label item-title padding-top *ngIf="device.status">ON</ion-label>
+                    <ion-label item-title padding-top *ngIf="!device.status">OFF</ion-label>
+                    <ion-toggle item-end [(ngModel)]="device.status" (ngModelChange)="onToggleChange(i)"></ion-toggle>
+                  </ion-item>
+                </div>
+              </li>
+            </ul>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
   </ion-row>
 

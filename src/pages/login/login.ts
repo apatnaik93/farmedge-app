@@ -35,7 +35,6 @@ export class LoginPage implements OnInit {
       },(err)=>{
         this.loading = false;
       });
-    //this.loading = false;
   }
 
   onEvent = (event: string): void => {

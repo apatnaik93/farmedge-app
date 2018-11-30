@@ -3,6 +3,7 @@ import {App, NavController, NavParams} from 'ionic-angular';
 import {RegisteredDevicesPage} from "../registered-devices/registered-devices";
 import {LoginPage} from "../login/login";
 import {NativeStorage} from "@ionic-native/native-storage";
+import {ProfilePage} from "../profile/profile";
 
 @Component({
   selector: 'page-more',
@@ -20,36 +21,12 @@ export class MorePage {
       },
       {
         "id": 2,
-        "title": "Weather Details",
-        "description": "Get weather Details",
-        "image": "assets/images/logo/login.png"
-      },
-      {
-        "id": 3,
-        "title": "Agricultural News",
-        "description": "Get the latest agricultural News",
-        "image": "assets/images/logo/login.png"
-      },
-      {
-        "id": 4,
-        "title": "Government Schemes",
-        "description": "Know about the govt schemes.",
-        "image": "assets/images/logo/login.png"
-      },
-      {
-        "id": 5,
-        "title": "Agro Advisory",
-        "description": "Advosory related to your farm.",
-        "image": "assets/images/logo/login.png"
-      },
-      {
-        "id": 6,
         "title": "Registered Devices",
         "description": "List of registered Devices",
         "image": "assets/images/logo/login.png"
       },
       {
-        "id": 7,
+        "id": 3,
         "title": "Logout",
         "description": "Logout of application.",
         "image": "assets/images/logo/login.png"
@@ -72,6 +49,8 @@ export class MorePage {
           .then(() => {
             this.app.getRootNav().setRoot(LoginPage);
           })
+      } else if(title === 'Profile'){
+        this.navCtrl.push(ProfilePage);
       }
     }
   }

@@ -29,6 +29,7 @@ import {RegisterDevicePage} from "../pages/register-device/register-device";
 import {HttpService} from "../services/http-service";
 import {FirmsService} from "../services/firms-service";
 import {UserService} from "../services/user.service";
+import {ProfilePage} from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {UserService} from "../services/user.service";
     MorePage,
     EnterOtpPage,
     RegisteredDevicesPage,
-    RegisterDevicePage
+    RegisterDevicePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import {UserService} from "../services/user.service";
     MorePage,
     EnterOtpPage,
     RegisteredDevicesPage,
-    RegisterDevicePage
+    RegisterDevicePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

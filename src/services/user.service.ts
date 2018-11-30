@@ -4,7 +4,7 @@ import {NavController} from "ionic-angular";
 
 @Injectable()
 export class UserService {
-  user;
+  user: User;
   navCtrl: NavController;
 
   constructor() {

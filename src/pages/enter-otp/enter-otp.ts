@@ -48,16 +48,19 @@ export class EnterOtpPage implements OnInit {
             this.userService.setUser(this.user);
             this.navCtrl.setRoot(TabsPage);
           });
+        // this.userService.setUser(this.user);
+        // this.navCtrl.setRoot(TabsPage);
       } else if (this.navParams.get('page') === 'register') {
         this.httpService.registerUser(this.user)
           .then((response) => {
             this.nativeStorage.setItem('user', response.user)
               .then(() => {
                 this.userService.setUser(response.user);
-                this.userService.setNav(this.navCtrl);
                 this.navCtrl.setRoot(TabsPage);
                 this.navCtrl.push(RegisteredDevicesPage);
               });
+            // this.navCtrl.setRoot(TabsPage);
+            // this.navCtrl.push(RegisteredDevicesPage);
           });
       }
     } else {

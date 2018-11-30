@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Device} from "../../models/models";
 import {UserService} from "../../services/user.service";
 import {HttpService} from "../../services/http-service";
+import {SMS} from "@ionic-native/sms";
 
 @Component({
   selector: 'page-register-devices',
@@ -19,6 +20,7 @@ export class RegisterDevicePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public userService: UserService,
+              public sms: SMS,
               public httpService: HttpService) {
     if (navParams.get('device')) {
       this.device = navParams.get('device');
@@ -32,6 +34,7 @@ export class RegisterDevicePage {
 
   onEvent = (event: string): void => {
     if (event === 'onSave') {
+      this.sms.send( this.simNumber + '', 'S1' + this.userService.getUser().mobile);
       this.device.name = this.deviceName;
       this.device.location = this.location;
       this.device.simNumber = this.simNumber;

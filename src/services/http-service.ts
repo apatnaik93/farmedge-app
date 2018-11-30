@@ -65,4 +65,16 @@ export class HttpService {
       .then(response => response);
   }
 
+  getOperations(): Promise<any> {
+    return this.httpClient.get(`${environment.api_url}/pump/allOperations`)
+      .toPromise()
+      .then(response => response);
+  }
+
+  getWeather(): Promise<any>{
+    return this.httpClient.get(`https://api.darksky.net/forecast/b94b3292e9aa5249a83f75c96910bec9/37.8267,-122.4233`)
+      .toPromise()
+      .then(response => response);
+  }
+
 }

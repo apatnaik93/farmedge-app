@@ -1,0 +1,44 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-card transparent text-center>
+          <ion-item box-shadow transparent text-center *ngIf="data != null">
+            <ion-avatar>
+              <img [src]="logoUrl" alt="">
+            </ion-avatar>
+            <h1 item-title>Abhishek</h1>
+          </ion-item>
+          <ion-row no-padding margin-top>
+            <!-- Info Author-->
+            <ion-col col-12 text-left margin-top box-shadow>
+              <ion-item no-padding transparent>
+                <ion-label floating>Name</ion-label>
+                <ion-input required type="text" [(ngModel)]="user.name"></ion-input>
+              </ion-item>
+              <ion-item no-padding transparent>
+                <ion-label floating>Mobile</ion-label>
+                <ion-input required type="number" pattern="[0-9]{10}" [(ngModel)]="user.mobile"></ion-input>
+              </ion-item>
+              <ion-item no-padding transparent>
+                <ion-label floating>Email</ion-label>
+                <ion-input required type="text" [(ngModel)]="user.mobile"></ion-input>
+              </ion-item>
+              <button ion-button float-left button-clear-outline round outline (click)="onEvent('onUpdate')">Update</button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
